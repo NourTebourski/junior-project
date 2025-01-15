@@ -11,6 +11,13 @@ const App = () => {
   const [product, setProduct] = useState([]);
   const [category,setCategory] = useState([])
   const [searchproduct, setSearchproduct] = useState("");
+  const [Visible, setVisible] = useState(false);
+  const makeItVisible = () => {
+    setVisible(true); 
+  };
+  const makeItHide = () => {
+    setVisible(false); 
+  };
 
   const changeView = (v) => {
     setView(v);
@@ -81,11 +88,16 @@ const handleUpdateProduct = (id,body)=>{
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#" onClick={()=>changeView('user')}>Home</a>
+          <a className="nav-link active" aria-current="page" href="#" onClick={()=>{changeView('user'),makeItHide()}}>Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link"  onClick={()=>changeView('main')} href="#">Admin</a>
+          <a className="nav-link"  onClick={()=>{changeView('main'),makeItVisible()}} href="#">Admin</a>
         </li>
+        {Visible && (
+          <li className="nav-item">
+            <a className="nav-link" onClick={()=>{changeView('add')}} href="#">Create product</a>
+          </li>
+        )}
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Category
@@ -117,6 +129,17 @@ const handleUpdateProduct = (id,body)=>{
       ) : View === "update" ?(
         <UpdateProduct  handleUpdateProduct={ handleUpdateProduct} />
       ) : View === "user" ? <UserView product={product} /> : <Category  category={category} />  }
+      <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+   
+    <ul>
+      <li>
+        Phone number : +21629842206
+      </li>
+      <li>Adress : Ben Arous , Rades , rue mouhamed ali 9 bis </li>
+    </ul>
+  </div>
+</nav>
     </div>
   );
 };

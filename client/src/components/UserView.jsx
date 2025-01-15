@@ -30,7 +30,7 @@ function UserView({ product }) {
               {Id === el.id && <p className="card-text">Discription : {el.discription}</p>}
               <div>
                 <a href="#" className="btn btn-primary" onClick={() => showDis(el.id)}>
-                  {Id === el.id ? 'Hide Details' : 'Show Details'}
+                 Details
                 </a>
               </div>
             </div>
