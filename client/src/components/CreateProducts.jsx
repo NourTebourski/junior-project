@@ -3,26 +3,65 @@ import React, { useState } from 'react'
 function CreateProducts({handleAddProduct}) {
   const [name,setname] = useState("")
   const [imageUrl,setimageUrl] = useState("")
-  const [price,setprice] = useState("")
+  const [price,setprice] = useState(0)
   const [discription,setdiscription] = useState("")
+  const [categoryId,setcategoryId] = useState(0)
 
 
   return (
-    <div>
-      <form>
-        <label htmlFor="name" >name</label>
-        <input type="text" onChange={(e)=>{setname(e.target.value)}} />
-        <label htmlFor="price" >price</label>
-        <input type="text"onChange={(e)=>{setprice(e.target.value)}} />
-        <label htmlFor="discription" onChange={(e)=>{setdiscription(e.target.value)}}>discription</label>
-        <input type="text" onChange={(e)=>{setdiscription(e.target.value)}}/>
-        <label htmlFor="imageUrl" >imageUrl</label>
-        <input type="text" onChange={(e)=>{setimageUrl(e.target.value)}}/>
-        <button onClick={()=>{handleAddProduct({name:name,price:price,imageUrl:imageUrl,discription:discription})}}>Add</button>
-        
-      </form>
-    </div>
+    <div className="container mt-4">
+<div className="form-group mb-3">
+    <label htmlFor="productName">Product Name</label>
+    <input
+        id="productName"
+        className="form-control"
+        placeholder="Enter product name"
+        onChange={(e)=>{setname(e.target.value)}}
+    />
+</div>
+
+<div className="form-group mb-3">
+    <label htmlFor="productImageUrl">Product Image URL</label>
+    <input
+        id="productImageUrl"
+        className="form-control"
+        placeholder="Enter product image URL"
+        onChange={(e)=>{setimageUrl(e.target.value)}}
+    />
+</div>
+
+<div className="form-group mb-3">
+    <label htmlFor="productPrice">Product Price</label>
+    <input
+        id="productPrice"
+        className="form-control"
+        placeholder="Enter product price"
+        onChange={(e)=>{setprice(e.target.value)}}
+    />
+</div>
+
+<div className="form-group mb-3">
+    <label htmlFor="productQuantity">Discription</label>
+    <input
+        id="productQuantity"
+        className="form-control"
+        placeholder="Enter product quantity"
+        onChange={(e)=>{setdiscription(e.target.value)}}
+    />
+</div>
+<div className="form-group mb-3">
+    <label htmlFor="productQuantity">categoryId</label>
+    <input
+        id="productQuantity"
+        className="form-control"
+        placeholder="Enter product quantity"
+        onChange={(e)=>{setcategoryId(e.target.value)}}
+    />
+</div>
+<button className="btn btn-success btn-lg" onClick={()=>{handleAddProduct({name:name,price:price,imageUrl:imageUrl,discription:discription,categoryId:categoryId})}}>ADD IT</button>
+</div>
   )
 }
 
 export default CreateProducts
+

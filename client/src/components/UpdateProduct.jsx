@@ -70,3 +70,4 @@ function UpdateProduct({ handleUpdateProduct }) {
 }
 
 export default UpdateProduct;
+

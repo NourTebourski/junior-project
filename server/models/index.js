@@ -20,9 +20,9 @@ category.hasMany(product,{
   })
 product.belongsTo(category,{foreignKey : "categoryId"})
 
-sequelize.sync()
-.then(()=>{
-  console.log("table created")
-})
-.catch((err)=>console.log("errrrrr",err))
+// sequelize.sync()
+// .then(()=>{
+//   console.log("table created")
+// })
+// .catch((err)=>console.log("errrrrr",err))
 module.exports = {category,product}
