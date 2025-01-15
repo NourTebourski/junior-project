@@ -4,14 +4,25 @@ import AllProducts from "./components/AllProducts.jsx";
 import CreateProducts from "./components/CreateProducts.jsx";
 import UpdateProduct from "./components/UpdateProduct.jsx";
 import UserView from "./components/UserView.jsx";
+import Category from "./components/Category.jsx";
 import "./style.css"
 const App = () => {
-  const [View, setView] = useState("main");
+  const [View, setView] = useState("user");
   const [product, setProduct] = useState([]);
+  const [category,setCategory] = useState([])
   const changeView = (v) => {
     setView(v);
   };
-
+  const getCategory = (id)=>{
+    axios
+      .get(`http://localhost:3000/product/${id}`)
+      .then((res) => {setCategory(res.data)
+    changeView("category")
+  })
+      .catch((err) => {
+        console.error("errrrrr", err);
+      });
+  }
   const fetch = () => {
     axios
       .get("http://localhost:3000/product")
@@ -56,7 +67,7 @@ const handleUpdateProduct = (id,body)=>{
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#" onClick={()=>changeView('main')}>SafeRide</a>
+    <a className="navbar-brand" href="#" onClick={()=>changeView('user')}>SafeRide</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -66,22 +77,19 @@ const handleUpdateProduct = (id,body)=>{
           <a className="nav-link active" aria-current="page" href="#" onClick={()=>changeView('user')}>Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Link</a>
+          <a className="nav-link"  onClick={()=>changeView('main')} href="#">Admin</a>
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Category
           </a>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Action</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
-            <li><hr className="dropdown-divider"/></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
+            <li><a className="dropdown-item" onClick={()=>{changeView('category'),getCategory(1)}} href="#">helmets</a></li>
+            <li><a className="dropdown-item" onClick={()=>{changeView('category'),getCategory(2)}} href="#">clothes</a></li>
+            
           </ul>
         </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+      
       </ul>
       <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
@@ -100,7 +108,7 @@ const handleUpdateProduct = (id,body)=>{
         <CreateProducts handleAddProduct={handleAddProduct} />
       ) : View === "update" ?(
         <UpdateProduct  handleUpdateProduct={ handleUpdateProduct} />
-      ) : <UserView product={product} />}
+      ) : View === "user" ? <UserView product={product} /> : <Category  category={category} />  }
     </div>
   );
 };

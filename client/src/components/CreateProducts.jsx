@@ -5,7 +5,7 @@ function CreateProducts({handleAddProduct}) {
   const [imageUrl,setimageUrl] = useState("")
   const [price,setprice] = useState(0)
   const [discription,setdiscription] = useState("")
-  const [categoryId,setcategoryId] = useState(0)
+  const [categoryId,setcategoryId] = useState(1)
 
 
   return (
@@ -41,24 +41,24 @@ function CreateProducts({handleAddProduct}) {
 </div>
 
 <div className="form-group mb-3">
-    <label htmlFor="productQuantity">Discription</label>
+    <label htmlFor="productDiscription">Discription</label>
     <input
-        id="productQuantity"
+        id="productDiscription"
         className="form-control"
-        placeholder="Enter product quantity"
+        placeholder="Enter product Discription"
         onChange={(e)=>{setdiscription(e.target.value)}}
     />
 </div>
 <div className="form-group mb-3">
-    <label htmlFor="productQuantity">categoryId</label>
+    <label htmlFor="productcategory">category Id</label>
     <input
-        id="productQuantity"
+        id="productcategory"
         className="form-control"
-        placeholder="Enter product quantity"
+        placeholder="Enter product category"
         onChange={(e)=>{setcategoryId(e.target.value)}}
     />
 </div>
-<button className="btn btn-success btn-lg" onClick={()=>{handleAddProduct({name:name,price:price,imageUrl:imageUrl,discription:discription,categoryId:categoryId})}}>ADD IT</button>
+<button className="btn btn-primary btn-lg" onClick={()=>{handleAddProduct({name:name,price:price,imageUrl:imageUrl,discription:discription,categoryId:categoryId})}}>ADD IT</button>
 </div>
   )
 }

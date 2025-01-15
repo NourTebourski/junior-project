@@ -3,9 +3,9 @@ const { product, category } = require("../models");
 module.exports = {
     addproduct: async (req, res) => {
       try {
-        const { name ,price,discription,imageUrl} = req.body;
+        const { name ,price,discription,imageUrl,categoryId} = req.body;
         const add = await product.create({
-          name ,price,discription,imageUrl
+          name ,price,discription,imageUrl,categoryId
         });
         res.status(200).send(add);
       } catch (error) {
@@ -46,6 +46,14 @@ module.exports = {
         res.status(200).send(updated)
       } catch (error) {
         throw error
+      }
+    },
+    getproductByCategory: async (req, res) => {
+      try {
+        const cata = await product.findAll({where:{categoryId:req.params.id}});
+        res.status(200).send(cata);
+      } catch (error) {
+        throw error;
       }
     },
   };

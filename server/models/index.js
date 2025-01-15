@@ -20,7 +20,7 @@ category.hasMany(product,{
   })
 product.belongsTo(category,{foreignKey : "categoryId"})
 
-// sequelize.sync()
+// sequelize.sync({alter:true})
 // .then(()=>{
 //   console.log("table created")
 // })

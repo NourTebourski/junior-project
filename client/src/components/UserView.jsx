@@ -25,7 +25,9 @@ function UserView({ product }) {
             <div className="card-body">
               <h5 className="card-title">{el.name}</h5>
               <p className="card-text">Price: {el.price}DT</p>
-              {Id === el.id && <p className="card-text">{el.discription}</p>}
+              <p className="card-text">Article Nbr: {el.id}</p>
+              <p className="card-text">Category : {el.category.name}</p>
+              {Id === el.id && <p className="card-text">Discription : {el.discription}</p>}
               <div>
                 <a href="#" className="btn btn-primary" onClick={() => showDis(el.id)}>
                   {Id === el.id ? 'Hide Details' : 'Show Details'}
