@@ -6,6 +6,7 @@ function UpdateProduct({ handleUpdateProduct }) {
   const [price,setprice] = useState(0)
   const [discription,setdiscription] = useState("")
   const [postId,setpostId] = useState(1)
+   const [categoryId,setcategoryId] = useState(1)
 
 
   return (
@@ -58,6 +59,16 @@ function UpdateProduct({ handleUpdateProduct }) {
         onChange={(e)=>{setpostId(e.target.value)}}
     />
 </div>
+<div className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" style={{ marginBottom: '6em'}} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
+          </a>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" onClick={()=>{setcategoryId(1)}} href="#">helmets</a></li>
+            <li><a className="dropdown-item"  onClick={()=>{setcategoryId(2)}}href="#">clothes</a></li>
+            
+          </ul>
+        </div>
 <button  className="btn btn-info" 
           onClick={() => {
             handleUpdateProduct(postId, {
@@ -65,6 +76,7 @@ function UpdateProduct({ handleUpdateProduct }) {
               price: price,
               imageUrl: imageUrl,
               discription: discription,
+              categoryId :categoryId
             });
           }}
         >

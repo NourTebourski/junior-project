@@ -49,15 +49,18 @@ function CreateProducts({handleAddProduct}) {
         onChange={(e)=>{setdiscription(e.target.value)}}
     />
 </div>
-<div className="form-group mb-3">
-    <label htmlFor="productcategory">category Id</label>
-    <input
-        id="productcategory"
-        className="form-control"
-        placeholder="Enter product category"
-        onChange={(e)=>{setcategoryId(e.target.value)}}
-    />
-</div>
+
+    <div className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" style={{ marginBottom: '6em'}} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
+          </a>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" onClick={()=>{setcategoryId(1)}} href="#">helmets</a></li>
+            <li><a className="dropdown-item"  onClick={()=>{setcategoryId(2)}}href="#">clothes</a></li>
+            
+          </ul>
+        </div>
+
 <button className="btn btn-primary btn-lg" onClick={()=>{handleAddProduct({name:name,price:price,imageUrl:imageUrl,discription:discription,categoryId:categoryId})}}>ADD IT</button>
 </div>
   )
