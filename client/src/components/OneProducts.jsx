@@ -12,7 +12,7 @@ const OneProducts = ({ product ,handledeleteProduct,changeView}) => {
                             className="card-img-top img-fluid"
                             src={el.imageUrl}
                             alt="Card image cap"
-                            style={{ maxHeight: '200px', objectFit: 'cover' }} // Control image size
+                            style={{ height: '200px', width: 'auto', objectFit: 'cover' }} // Control image size
                         />
                         <div className="card-body d-flex flex-column ">
                             <h5 className="card-title">{el.name}</h5>

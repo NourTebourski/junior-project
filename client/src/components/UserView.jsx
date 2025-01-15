@@ -20,7 +20,7 @@ function UserView({ product }) {
               className="card-img-top img-fluid"
               src={el.imageUrl}
               alt="Card image cap"
-              style={{ maxHeight: '200px', objectFit: 'cover' }}
+              style={{ height: '200px', width: 'auto', objectFit: 'cover' }}
             />
             <div className="card-body">
               <h5 className="card-title">{el.name}</h5>
