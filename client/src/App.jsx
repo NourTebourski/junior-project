@@ -5,13 +5,20 @@ import CreateProducts from "./components/CreateProducts.jsx";
 import UpdateProduct from "./components/UpdateProduct.jsx";
 import UserView from "./components/UserView.jsx";
 import Category from "./components/Category.jsx";
-import "./style.css"
+
 const App = () => {
   const [View, setView] = useState("user");
   const [product, setProduct] = useState([]);
   const [category,setCategory] = useState([])
+  const [searchproduct, setSearchproduct] = useState("");
+
   const changeView = (v) => {
     setView(v);
+  };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const filterproducts = product.filter(p => p.name.toLowerCase().includes(searchproduct.toLowerCase()));
+    setProduct(filterproducts);
   };
   const getCategory = (id)=>{
     axios
@@ -67,7 +74,7 @@ const handleUpdateProduct = (id,body)=>{
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#" onClick={()=>changeView('user')}>SafeRide</a>
+    <a className="navbar-brand" href="#" onClick={()=>{window.location.reload()}}>SafeRide</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -91,8 +98,9 @@ const handleUpdateProduct = (id,body)=>{
         </li>
       
       </ul>
-      <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <form className="d-flex" onSubmit={handleSearch}>
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchproduct}
+      onChange={(e) => {setSearchproduct(e.target.value)}}/>
         <button className="btn btn-outline-primary" type="submit">Search</button>
       </form>
     </div>

@@ -12,7 +12,7 @@ function UserView({ product }) {
   };
 
   return (
-    <div className="d-flex flex-wrap gap-3" style={{ marginLeft: '4em', marginRight: "4em", marginTop: "2.5em" }}>
+    <div className="d-flex flex-wrap gap-3" style={{  justifyContent: 'center', alignItems: 'center', marginTop: "2.5em" }}>
       {product.map((el) => {
         return (
           <div className="card" style={{ margin: '1em', width: "300px" }} key={el.id}>

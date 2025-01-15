@@ -12,7 +12,8 @@ const OneProducts = ({ product ,handledeleteProduct,changeView}) => {
       };
     
     return (
-        <div className="d-flex  flex-wrap gap-3" style={{ marginLeft: '4em', marginRight: "4em", marginTop: "2.5em" }}>
+        <div className="d-flex flex-wrap gap-3" style={{ marginTop: "2.5em", justifyContent: 'center', alignItems: 'center' }}>
+
             {product.map((el) => {  
                 console.log("elll",el)
                 return (
@@ -33,7 +34,7 @@ const OneProducts = ({ product ,handledeleteProduct,changeView}) => {
                             <a href="#" className="btn btn-danger m-1" onClick={()=>{handledeleteProduct(el.id)}}>Delete</a>
                             <a href="#" className="btn btn-primary  m-1" onClick={()=>{changeView("add")}}>Add</a>
                             <a href="#" className="btn btn-info m-1" onClick={()=>{changeView("update")}}>Update</a>
-                            <a href="#" className="btn btn-primary" onClick={() => showDis(el.id)}>Details</a>
+                            <a href="#" className="btn btn-primary m-1" onClick={() => showDis(el.id)}>Details</a>
                             </div>
                         </div>
                     </div>
